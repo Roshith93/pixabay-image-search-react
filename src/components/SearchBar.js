@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import {PixabayConsumer} from './Context'
@@ -25,9 +24,9 @@ class SearchBar extends Component {
                   <TextField
                     select
                     name="amount"
-                    value={amount}
+                    value={amount || ''}
                     onClick={onItemPerPageChange}
-                    label="Search"
+                    label="Items"
                     >
                     <MenuItem key={1} value={5}>5</MenuItem>
                     <MenuItem key={2} value={10}>10</MenuItem>

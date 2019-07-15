@@ -1,11 +1,10 @@
 import React,{Component} from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import  NavBar from './components/AppBar'       
 import  {PixabayConsumer} from './components/Context'
 import SearchBar from './components/SearchBar'
-
+import ImageResults from './components/ImageResults'
 
 
 class App extends Component {
@@ -13,9 +12,15 @@ class App extends Component {
   return (
      <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="sm">
+      <Container maxWidth="lg">
          <NavBar />
          <SearchBar />
+         <PixabayConsumer>
+          {value => {
+            const {images} = value;
+            return images.length !==0 ?  <ImageResults images={images} /> : null
+          }}
+         </PixabayConsumer>
       </Container>
     </React.Fragment>
   );

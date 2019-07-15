@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+
 const PixabayContext = React.createContext();
 // This object provids two components names Provider and a Consumer
 
 class PixabayProvider extends Component {
   state = {
-    searchText: 'blu',
+    searchText: '',
     amount: '5',
     apiUrl: 'https://pixabay.com/api',
     apiKey: '8935008-0222e7477f421c0ea505f6d42',
@@ -18,7 +19,6 @@ class PixabayProvider extends Component {
       try {
         const response = await axios.get(`${this.state.apiUrl}/?key=${this.state.apiKey}&q=${this.state.searchText}&image_type=photo&per_page=${this.state.amount}&safesearch=true`)
         let data = response.data.hits
-        console.log(data)
         this.setState(() => {
           return {
             images: data
@@ -30,16 +30,27 @@ class PixabayProvider extends Component {
   }
 
   // Search Text
-  onTextChange = (e) => {
+  onTextChange = (e) => { 
+    const val = e.target.value
     const {name, value} = e.target;
+    if(val !== ''){
       this.setState(() => {
         return {
         [name]:value
         }
-      },()=>{
+      },()=> {
         this.getData()
       })
-  }
+    }else{
+      this.setState(() => {
+        return {
+          searchText: '',
+          images: []
+        }
+      })
+    }
+    }
+  
 
   // items per page
    onItemPerPageChange = e => {
