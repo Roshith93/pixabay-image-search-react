@@ -1,19 +1,25 @@
-import React from 'react';
-import './App.css';
-import  NavBar from './components/AppBar'
+import React,{Component} from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import  NavBar from './components/AppBar'       
 import  {PixabayConsumer} from './components/Context'
 import SearchBar from './components/SearchBar'
 
-function App() {
+
+
+class App extends Component {
+  render(){
   return (
-    <React.Fragment>
-     <NavBar />
-     <SearchBar />
-      <PixabayConsumer>
-        {h => console.log(h.searchText)}
-      </PixabayConsumer>
-     </React.Fragment>
+     <React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="sm">
+         <NavBar />
+         <SearchBar />
+      </Container>
+    </React.Fragment>
   );
+}
 }
 
 export default App;

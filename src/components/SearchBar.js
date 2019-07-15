@@ -10,32 +10,29 @@ class SearchBar extends Component {
     return (
       <PixabayConsumer>
         {value => {
-            const {amount, searchText, onAmountChange, onTextChange} = value;
+            const {amount, searchText, onTextChange, onItemPerPageChange} = value;
           return(
               <React.Fragment>
                     <TextField
                     name="searchText"
                     onChange={onTextChange}
                     value={searchText}
-                    id="standard-dense"
-                    label="Dense"
+                    id="search-text"
+                    label="Search the value"
                     margin="dense"
                     fullWidth={true}
-                    
                   />
                   <TextField
                     select
                     name="amount"
                     value={amount}
-                    onClick={onAmountChange}
+                    onClick={onItemPerPageChange}
                     label="Search"
-                    name="searchText" 
                     >
                     <MenuItem key={1} value={5}>5</MenuItem>
                     <MenuItem key={2} value={10}>10</MenuItem>
                     <MenuItem key={3} value={15}>15</MenuItem>
                   </TextField>
-
               </React.Fragment>
           )
         }}

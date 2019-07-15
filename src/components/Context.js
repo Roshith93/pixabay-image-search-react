@@ -13,16 +13,6 @@ class PixabayProvider extends Component {
     images: []
   }
 
-  onAmountChange = e => {
-    const {name, value} = e.target;
-    this.setState(()=> {
-      return(
-        [name]: value 
-      )
-    })
-    console.log("amouc", this.state.amount);
-  }
-
   // api calling 
   getData = async () => {
       try {
@@ -51,12 +41,19 @@ class PixabayProvider extends Component {
       })
   }
 
+  // items per page
+   onItemPerPageChange = e => {
+     this.setState({
+       amount: e.target.value
+     })
+  }
+
   render() {
     return (
       <PixabayContext.Provider value={{
         ...this.state,
-        onAmountChange: this.onAmountChange,
-        onTextChange: this.onTextChange
+        onTextChange: this.onTextChange,
+        onItemPerPageChange: this.onItemPerPageChange
         }}>
            {this.props.children}
       </PixabayContext.Provider>
