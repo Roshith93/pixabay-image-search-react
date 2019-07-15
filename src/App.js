@@ -2,14 +2,16 @@ import React from 'react';
 import './App.css';
 import  NavBar from './components/AppBar'
 import  {PixabayConsumer} from './components/Context'
+import SearchBar from './components/SearchBar'
 
 function App() {
   return (
     <React.Fragment>
      <NavBar />
-     <PixabayConsumer>
-       {value => value}
-     </PixabayConsumer>
+     <SearchBar />
+      <PixabayConsumer>
+        {h => console.log(h.searchText)}
+      </PixabayConsumer>
      </React.Fragment>
   );
 }

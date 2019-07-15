@@ -5,7 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {PixabayProvider} from './components/Context'
 
-ReactDOM.render(<PixabayProvider><App /></PixabayProvider>, document.getElementById('root'));
+const What = <PixabayProvider><App /></PixabayProvider>;
+const Where = document.getElementById('root');
+ReactDOM.render(What,Where );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
