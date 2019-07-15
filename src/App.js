@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import  NavBar from './components/AppBar'
+import  {PixabayConsumer} from './components/Context'
 
 function App() {
   return (
-    <div className="App">
+    <React.Fragment>
      <NavBar />
-    </div>
+     <PixabayConsumer>
+       {value => value}
+     </PixabayConsumer>
+     </React.Fragment>
   );
 }
 
